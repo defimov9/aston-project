@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: normal;
+}
+
+.app {
+    min-height: 100vh;
+}
