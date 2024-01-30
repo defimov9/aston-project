@@ -1,18 +1,14 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import cls from './Register.module.css';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuthActions } from '../../hooks/useAuthActions';
 
 function Register() {
-  const { user, register } = useAuth();
-  const navigate = useNavigate();
+  const { user, register } = useAuthActions();
 
-  useEffect(() => {
-    if (user) {
-      navigate('/');
-    }
-  }, [navigate, user]);
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   const handleSubmitForm = (email: string, password: string) => {
     register(email, password);

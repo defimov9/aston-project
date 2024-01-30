@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../../assets/logo.svg?react';
 import cls from './Header.module.css';
 import classNames from '../../utils/classNames';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuthActions } from '../../hooks/useAuthActions';
 
 function Header() {
-  const { user, logout } = useAuth();
+  const { user, logout } = useAuthActions();
 
   const isLinkActive = ({ isActive }: { isActive: boolean }) =>
     classNames(cls.link, { [cls.activeLink]: isActive });

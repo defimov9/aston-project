@@ -1,16 +1,10 @@
 import './App.css';
 import { Toaster } from 'react-hot-toast';
-import { useEffect } from 'react';
 import AppRouter from './routes/AppRouter';
-import { useAuth } from './hooks/useAuth';
+import { useAuthListener } from './hooks/useAuthListener';
 
 function App() {
-  const { subscribeToAuthChanges } = useAuth();
-
-  useEffect(() => {
-    const unsubscribe = subscribeToAuthChanges();
-    return unsubscribe;
-  }, [subscribeToAuthChanges]);
+  useAuthListener();
 
   return (
     <div className="app">
