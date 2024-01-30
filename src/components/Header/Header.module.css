@@ -31,3 +31,16 @@
 .activeLink {
     color: #2dcb1b;
 }
+
+.logoutBtn {
+    background-color: inherit;
+    color: #FFF;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.2s linear;
+}
+
+.logoutBtn:hover {
+    opacity: 0.6;
+}
