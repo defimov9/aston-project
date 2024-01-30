@@ -25,5 +25,16 @@ module.exports = {
     'no-confusing-arrow': 'off',
     'implicit-arrow-linebreak': 'off',
     'react/jsx-curly-newline': 'off',
+    'import/prefer-default-export': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'],
+      },
+    ],
+    'object-curly-newline': 'off',
+    '@typescript-eslint/no-shadow': 'off',
   },
 };
