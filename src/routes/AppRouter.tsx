@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-import PrivateOutlet from './PrivateOutlet';
 import Layout from '../components/Layout/Layout';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 function AppRouter() {
   const Main = lazy(() => import('../pages/Main/Main'));
@@ -14,9 +15,13 @@ function AppRouter() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route element={<PrivateOutlet />}>
+
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/history" element={<History />} />
         </Route>
