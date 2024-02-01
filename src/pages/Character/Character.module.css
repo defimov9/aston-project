@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    gap: 100px;
+    margin-top: 70px;
+}
+
+.image {
+    border-radius: 100%;
+    border: 4px solid #29a41b;
+}
+
+.textInfoContainer {
+    width: 400px;
+}
+
+.title {
+    font-size: 36px;
+}
+
+.textInfo {
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #29a41b;
+    font-weight: 700;
+}
+
+.textData {
+    font-weight: normal;
+    color: #000;
+}
+
+.backBtn {
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    border: 3px solid #29a41b;
+    background-color: inherit;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+    cursor: pointer;
+}

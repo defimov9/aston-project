@@ -36,5 +36,8 @@ module.exports = {
     ],
     'object-curly-newline': 'off',
     '@typescript-eslint/no-shadow': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'operator-linebreak': 'off',
+    '@typescript-eslint/indent': 'off',
   },
 };

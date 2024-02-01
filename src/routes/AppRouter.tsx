@@ -3,6 +3,7 @@ import { lazy } from 'react';
 import Layout from '../components/Layout/Layout';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import Character from '../pages/Character/Character';
 
 function AppRouter() {
   const Main = lazy(() => import('../pages/Main/Main'));
@@ -15,6 +16,7 @@ function AppRouter() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
+        <Route path="/:characterId" element={<Character />} />
 
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
