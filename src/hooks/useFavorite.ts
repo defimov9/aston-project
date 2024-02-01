@@ -19,14 +19,14 @@ const useFavorite = () => {
   const { user } = useAuthActions();
 
   useEffect(() => {
-    if (user) {
+    if (user && user.email) {
       dispatch(fetchFavorites(user.email));
     }
   }, [dispatch, user]);
 
   const toggleFavorite = useCallback(
     (character: Character) => {
-      if (!user) return;
+      if (!user || !user.email) return;
 
       const isFavorite = favorites.some((fav) => fav.id === character.id);
       if (isFavorite) {
