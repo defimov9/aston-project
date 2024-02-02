@@ -24,23 +24,22 @@ const useFavorite = () => {
     }
   }, [dispatch, user]);
 
+  const isFavorite = useCallback(
+    (character: Character) => favorites.some((fav) => fav.id === character.id),
+    [favorites],
+  );
+
   const toggleFavorite = useCallback(
     (character: Character) => {
       if (!user || !user.email) return;
 
-      const isFavorite = favorites.some((fav) => fav.id === character.id);
-      if (isFavorite) {
+      if (isFavorite(character)) {
         dispatch(removeFavorite({ email: user.email, character }));
       } else {
         dispatch(addFavorite({ email: user.email, character }));
       }
     },
-    [dispatch, favorites, user],
-  );
-
-  const isFavorite = useCallback(
-    (character: Character) => favorites.some((fav) => fav.id === character.id),
-    [favorites],
+    [dispatch, isFavorite, user],
   );
 
   return { favorites, toggleFavorite, isFavorite, isLoading };
