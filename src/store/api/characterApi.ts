@@ -11,6 +11,8 @@ interface CharactersResponse {
   results: Character[];
 }
 
+const transformResponse = (response: CharactersResponse) => response.results;
+
 export const charactersApi = createApi({
   reducerPath: 'charactersApi',
   baseQuery: fetchBaseQuery({
@@ -19,13 +21,20 @@ export const charactersApi = createApi({
   endpoints: (builder) => ({
     fetchAllCharacters: builder.query<Character[], void>({
       query: () => '/character',
-      transformResponse: (response: CharactersResponse) => response.results,
+      transformResponse,
     }),
     fetchCharacterById: builder.query<Character, string>({
       query: (id) => `/character/${id}`,
     }),
+    fetchCharacterByName: builder.query<Character[], string>({
+      query: (name) => `/character/?name=${name}`,
+      transformResponse,
+    }),
   }),
 });
 
-export const { useFetchAllCharactersQuery, useFetchCharacterByIdQuery } =
-  charactersApi;
+export const {
+  useFetchAllCharactersQuery,
+  useFetchCharacterByIdQuery,
+  useFetchCharacterByNameQuery,
+} = charactersApi;

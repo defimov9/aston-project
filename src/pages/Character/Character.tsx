@@ -1,10 +1,13 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchCharacterByIdQuery } from '../../store/api/characterApi';
 import cls from './Character.module.css';
+import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
+import useFavorite from '../../hooks/useFavorite';
 
 function Character() {
   const { characterId } = useParams();
   const { data: character } = useFetchCharacterByIdQuery(characterId ?? '');
+  const { isFavorite, toggleFavorite, isLoading } = useFavorite();
   const navigate = useNavigate();
 
   if (!character) {
@@ -34,9 +37,16 @@ function Character() {
         <p className={cls.textInfo}>
           Location: <span className={cls.textData}>{location.name}</span>
         </p>
-        <button className={cls.backBtn} type="button" onClick={goBack}>
-          Назад
-        </button>
+        <div className={cls.btnContainer}>
+          <button className={cls.backBtn} type="button" onClick={goBack}>
+            Назад
+          </button>
+          <FavoriteButton
+            isFavorite={isFavorite(character)}
+            isLoading={isLoading}
+            toggleFavorite={() => toggleFavorite(character)}
+          />
+        </div>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { useAuthActions } from './useAuthActions';
 import {
   selectFavoriteItems,
   selectFavoritesLoading,
+  selectIsFavoriteFetching,
 } from '../store/selectors/favoriteSelectors';
 import {
   addFavorite,
@@ -16,6 +17,7 @@ const useFavorite = () => {
   const dispatch = useAppDispatch();
   const favorites = useAppSelector(selectFavoriteItems);
   const isLoading = useAppSelector(selectFavoritesLoading);
+  const isFavoriteFetching = useAppSelector(selectIsFavoriteFetching);
   const { user } = useAuthActions();
 
   useEffect(() => {
@@ -42,7 +44,13 @@ const useFavorite = () => {
     [dispatch, isFavorite, user],
   );
 
-  return { favorites, toggleFavorite, isFavorite, isLoading };
+  return {
+    favorites,
+    toggleFavorite,
+    isFavorite,
+    isLoading,
+    isFavoriteFetching,
+  };
 };
 
 export default useFavorite;

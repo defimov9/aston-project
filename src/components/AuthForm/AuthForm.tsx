@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import cls from './AuthForm.module.css';
 
@@ -73,5 +74,11 @@ function AuthForm({ title, buttonText, handleSubmitForm }: Props) {
     </form>
   );
 }
+
+AuthForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  handleSubmitForm: PropTypes.func.isRequired,
+};
 
 export default AuthForm;

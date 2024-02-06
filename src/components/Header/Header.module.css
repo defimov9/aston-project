@@ -1,6 +1,11 @@
 .header {
     background-color: rgb(34, 31, 31);
     padding: 0 30px;
+    padding-bottom: 20px;
+}
+
+.green {
+    background-color: rgb(22, 50, 20);
 }
 
 .navbar {
@@ -42,5 +47,18 @@
 }
 
 .logoutBtn:hover {
+    opacity: 0.6;
+}
+
+.themeBtn {
+    background-color: inherit;
+    color: #FFF;
+    font-size: 20px;
+    transition: opacity 0.2s linear;
+    border: none;
+    cursor: pointer;
+}
+
+.themeBtn:hover {
     opacity: 0.6;
 }
