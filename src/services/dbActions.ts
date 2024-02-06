@@ -7,6 +7,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Character } from '../models/character';
+import { History } from '../models/history';
 
 export async function readDataFromFirebase<T>(
   email: string,
@@ -19,7 +20,8 @@ export async function readDataFromFirebase<T>(
     const userData = userSnapshot.data();
 
     if (userData && userData[field]) {
-      return userData[field];
+      const data: T[] = userData[field];
+      return data.reverse();
     }
   }
 
@@ -29,7 +31,7 @@ export async function readDataFromFirebase<T>(
 export async function addToFirebaseArray(
   email: string,
   field: string,
-  newData: Character,
+  newData: Character | History,
 ) {
   const userRef = doc(db, 'users', email);
 
@@ -41,7 +43,7 @@ export async function addToFirebaseArray(
 export async function removeFromFirebaseArray(
   email: string,
   field: string,
-  dataToRemove: Character,
+  dataToRemove: Character | History,
 ) {
   const userRef = doc(db, 'users', email);
 

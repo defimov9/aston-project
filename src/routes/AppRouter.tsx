@@ -1,9 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import Layout from '../components/Layout/Layout';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
-import Character from '../pages/Character/Character';
+import AuthRoute from './AuthRoute';
 
 function AppRouter() {
   const Main = lazy(() => import('../pages/Main/Main'));
@@ -11,22 +9,28 @@ function AppRouter() {
   const Register = lazy(() => import('../pages/Register/Register'));
   const Favorites = lazy(() => import('../pages/Favorites/Favorites'));
   const History = lazy(() => import('../pages/History/History'));
+  const Character = lazy(() => import('../pages/Character/Character'));
+  const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
+  const Search = lazy(() => import('../pages/Search/Search'));
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
-        <Route path="/:characterId" element={<Character />} />
+        <Route path="/character/:characterId" element={<Character />} />
+        <Route path="/search" element={<Search />} />
 
-        <Route element={<PublicRoute />}>
+        <Route element={<AuthRoute requireAuth={false} />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>
 
-        <Route element={<PrivateRoute />}>
+        <Route element={<AuthRoute requireAuth />}>
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/history" element={<History />} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

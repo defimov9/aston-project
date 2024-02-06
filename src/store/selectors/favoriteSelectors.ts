@@ -12,3 +12,8 @@ export const selectFavoritesLoading = createSelector(
   [selectFavoritesState],
   (favoritesState) => favoritesState.loading,
 );
+
+export const selectIsFavoriteFetching = createSelector(
+  [selectFavoritesState],
+  (favoritesState) => favoritesState.isFavoriteFetching,
+);

@@ -9,22 +9,29 @@ import {
 interface FavoriteState {
   items: Character[];
   loading: boolean;
+  isFavoriteFetching: boolean;
 }
 
-const initialState: FavoriteState = { items: [], loading: false };
+const initialState: FavoriteState = {
+  items: [],
+  loading: false,
+  isFavoriteFetching: false,
+};
 
 const favoriteSlice = createSlice({
   name: 'favorites',
   initialState,
-  reducers: {},
+  reducers: {
+    clearFavorites: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFavorites.pending, (state) => {
-        state.loading = true;
+        state.isFavoriteFetching = true;
       })
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.items = action.payload;
-        state.loading = false;
+        state.isFavoriteFetching = false;
       })
       .addCase(addFavorite.pending, (state) => {
         state.loading = true;
@@ -45,4 +52,5 @@ const favoriteSlice = createSlice({
   },
 });
 
+export const { clearFavorites } = favoriteSlice.actions;
 export default favoriteSlice.reducer;

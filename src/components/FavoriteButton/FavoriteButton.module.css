@@ -1,0 +1,8 @@
+.button {
+    border: none;
+    background-color: inherit;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 0;
+}
