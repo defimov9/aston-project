@@ -36,6 +36,9 @@ jobs:
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
           VITE_RICK_AND_MORTY_API_URL: ${{ secrets.VITE_RICK_AND_MORTY_API_URL }}
 
+      - name: Copy netlify.toml to the publish directory
+        run: cp netlify.toml ./dist/
+      
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
