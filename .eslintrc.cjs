@@ -9,6 +9,7 @@ module.exports = {
     'airbnb/hooks',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:storybook/recommended',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -39,5 +40,12 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'operator-linebreak': 'off',
     '@typescript-eslint/indent': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
+        peerDependencies: true,
+      },
+    ],
   },
 };
