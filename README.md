@@ -45,7 +45,7 @@
 ### 2 уровень (необязательный)
 
 - [x] Используется TypeScript.
-- [ ] Подключен storybook и созданы два, три сториса с knobs, которые показывают разные состояния компонента:
+- [x] Подключен storybook и созданы два, три сториса с knobs, которые показывают разные состояния компонента: [Header](src/components/Header/Header.stories.tsx), [CharacterCard](src/components/CharacterCard/CharacterCard.stories.tsx), [FavoriteButton](src/components/FavoriteButton/FavoriteButton.stories.tsx)
 - [x] Использвуется Firebase для учетных записей пользователей и их Избранного и Истории поиска: [services](src/services), [useAuthActions](src/hooks/useAuthActions.ts), [useAuthListener](src/hooks/useAuthListener.ts), [thunks](src/store/thunks).
 - [x] Настроен CI/CD: [main.yml](.github/workflows/main.yml).
 - [x] Используются мемоизированные селекторы (createSelector): [selectors](src/store/selectors).
