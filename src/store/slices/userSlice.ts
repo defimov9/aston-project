@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../../models/user';
 
-interface UserState {
+export interface UserState {
   user: User | null;
   loading: boolean;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   user: null,
   loading: true,
 };
